@@ -1,0 +1,46 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diachi %>
+    <%= form.text_area :diachi, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sdt %>
+    <%= form.text_field :sdt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ghichu %>
+    <%= form.text_area :ghichu %>
+  </div>
+     <div class="field">
+          <%= form.label :total %>
+          <%= form.number_field :total, :value =>@total,:readonly => true%>
+</div>
+
+  <div class="actions">
+    <%= form.submit 'Dat hang'%>
+  </div>
+<% end %>

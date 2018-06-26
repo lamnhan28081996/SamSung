@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Xin chào! <%= @order.name %>
+    </p>
+    <p>
+    <%= Time.now %><br>
+      Tên KH: <%= @order.name %>.<br>
+      Số ĐT: <%= @order.sdt %><br>
+      Email: <%= @order.email %><br>
+      Địa chỉ: <%= @order.diachi %><br>
+      Ghi chú của KH: <%= @order.ghichu %><br>
+    </p>
+    <br><hr>
+    <p>Đơn hàng của bạn: </p>
+    <%= render @order.line_items %><br>
+    <p>Tổng đơn:</p><span class="item_price"><%= number_to_currency(@order.total, unit: " VNĐ",format: "%n %u",:precision => 0) %></span>
+
+  </body>
+</html>

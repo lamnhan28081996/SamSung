@@ -1,0 +1,11 @@
+<% if line_item == @current_item %>
+<tr id="current_item">
+<% else %>
+<tr>
+<% end %>
+<br>
+    <td style="font-size: 15px"><%= line_item.quantity%>x</td>
+    <td style="font-size: 15px"><%= line_item.product.title %></td>
+    <td style="font-size: 15px" class="item_price"><%= number_to_currency(line_item.total_price, unit: " VNĐ",format: "%n %u",:precision => 0) %></td>
+</tr>
+<br>

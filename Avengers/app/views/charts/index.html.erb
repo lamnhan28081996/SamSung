@@ -1,0 +1,53 @@
+<p id="notice">
+    <%= notice %>
+</p>
+
+<h1>Orders</h1>
+<form>
+    <input id="bday-month" type="month" name="bdaymonth">
+    <input type="submit" id="btn">
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Ngày đặt hàng</th>
+            <th>Tổng đơn hàng</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @orders%>
+            <h1>All total</h1>
+            <span class="item_price"><%= number_to_currency($Alltotal, unit: " VNĐ",format: "%n %u",:precision => 0) %></span>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td>
+                            <%= order.name %>
+                        </td>
+                        <td>
+                            <%= order.diachi %>
+                        </td>
+                        <td>
+                            <%= order.sdt %>
+                        </td>
+                        <td>
+                            <%= order.email %>
+                        </td>
+                        <td>
+                            <%= order.created_at.strftime("%d/%m/%Y") %>
+                        </td>
+                        <td>
+                            <%= number_to_currency(order.total) %>
+                        </td>
+                    </tr>
+                    <% end %>
+                        <%end%>
+    </tbody>
+
+</table>
+
+<br>
